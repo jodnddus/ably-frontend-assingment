@@ -1,7 +1,8 @@
 import { auth } from "lib/apis";
+import { UserInfoType } from "lib/types/auth.types";
 
 const getUserInfo = async (accessToken: string) => {
-  const { data } = await auth.get("/api/user", {
+  const { data } = await auth.get<UserInfoType>("/api/user", {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
