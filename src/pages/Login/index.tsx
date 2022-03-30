@@ -47,7 +47,7 @@ function Login() {
           />
         </InputContainer>
         <ButtonContainer>
-          <Button type={"submit"} name="버튼" isDisable={false} />
+          <Button type={"submit"} name="로그인" isDisable={false} />
           <Button
             type={"button"}
             name="비밀번호 재설정"
