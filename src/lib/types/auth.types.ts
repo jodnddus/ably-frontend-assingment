@@ -3,7 +3,8 @@ interface LoginResponseType {
 }
 
 interface LogoutResponseType {
-  lastConnectedAt: Date;
+  // timestamp
+  lastConnectedAt: number;
 }
 
 interface UserInfoType {
