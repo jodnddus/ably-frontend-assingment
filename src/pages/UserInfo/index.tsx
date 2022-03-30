@@ -1,17 +1,20 @@
 import { useEffect } from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 import { Button, UserInfoCard } from "components";
 
-import { setUserInfo } from "reducers/user";
+import { setLastConnectedAt, setUserInfo } from "reducers/user";
 
 import { useAppDispatch, useAppSelector } from "hooks";
 
-import { getUserInfo } from "lib/services/auth";
+import { getUserInfo, logout } from "lib/services/auth";
 
 function UserInfo() {
   const user = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     getUserInfo(user.accessToken)
@@ -35,7 +38,14 @@ function UserInfo() {
         name="로그아웃"
         isDisable={false}
         onClick={() => {
-          console.log("로그아웃");
+          logout(user.accessToken)
+            .then((res) => {
+              dispatch(setLastConnectedAt(res.lastConnectedAt));
+              navigate("/");
+            })
+            .catch((e) => {
+              console.log(e.response);
+            });
         }}
       />
     </UserInfoContainer>
