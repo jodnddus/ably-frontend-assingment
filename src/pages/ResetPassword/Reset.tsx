@@ -32,28 +32,35 @@ function Reset() {
   return (
     <ResetContainer>
       <h1>비밀번호 변경</h1>
-      <Input
-        type="password"
-        value={newPassword}
-        isError={false}
-        onChange={(value) => setNewPassword(value)}
-      />
-      <Input
-        type="password"
-        value={newPasswordConfirm}
-        isError={false}
-        onChange={(value) => setNewPasswordConfirm(value)}
-      />
-      <Button
-        type="button"
-        name="비밀번호 변경하기"
-        isDisable={false}
-        onClick={onClickNext}
-      />
+      <ElementsContainer>
+        <Input
+          type="password"
+          value={newPassword}
+          isError={false}
+          onChange={(value) => setNewPassword(value)}
+        />
+        <Input
+          type="password"
+          value={newPasswordConfirm}
+          isError={false}
+          onChange={(value) => setNewPasswordConfirm(value)}
+        />
+        <Button
+          type="button"
+          name="비밀번호 변경하기"
+          isDisable={false}
+          onClick={onClickNext}
+        />
+      </ElementsContainer>
     </ResetContainer>
   );
 }
 
 const ResetContainer = styled.div``;
+const ElementsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
 
 export default Reset;

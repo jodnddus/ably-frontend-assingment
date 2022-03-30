@@ -27,22 +27,29 @@ function Issued() {
   return (
     <IssuedContainer>
       <h1>인증 코드 발급 요청</h1>
-      <Input
-        type="text"
-        value={auth.email}
-        onChange={(value) => dispatch(setEmail(value))}
-        isError={false}
-      />
-      <Button
-        type="button"
-        name="다음"
-        isDisable={false}
-        onClick={onClickNext}
-      />
+      <ElementsContainer>
+        <Input
+          type="text"
+          value={auth.email}
+          onChange={(value) => dispatch(setEmail(value))}
+          isError={false}
+        />
+        <Button
+          type="button"
+          name="다음"
+          isDisable={false}
+          onClick={onClickNext}
+        />
+      </ElementsContainer>
     </IssuedContainer>
   );
 }
 
 const IssuedContainer = styled.div``;
+const ElementsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
 
 export default Issued;

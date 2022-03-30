@@ -34,23 +34,30 @@ function Validation() {
   return (
     <ValidationContainer>
       <h1>인증 코드 검증</h1>
-      <Timer second={auth.remainMillisecond} />
-      <Input
-        type="text"
-        value={authCode}
-        onChange={(value) => setAuthCode(value)}
-        isError={false}
-      />
-      <Button
-        type="button"
-        name="다음"
-        isDisable={false}
-        onClick={onClickNext}
-      />
+      <ElementsContainer>
+        <Timer second={auth.remainMillisecond} />
+        <Input
+          type="text"
+          value={authCode}
+          onChange={(value) => setAuthCode(value)}
+          isError={false}
+        />
+        <Button
+          type="button"
+          name="다음"
+          isDisable={false}
+          onClick={onClickNext}
+        />
+      </ElementsContainer>
     </ValidationContainer>
   );
 }
 
 const ValidationContainer = styled.div``;
+const ElementsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
 
 export default Validation;
