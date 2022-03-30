@@ -8,7 +8,7 @@ const resetPassword = async (
   newPassword: string,
   newPasswordConfirm: string
 ) => {
-  const { data } = await auth.post<ResetPasswordResponseType>(
+  const { data } = await auth.patch<ResetPasswordResponseType>(
     "/api/reset-password",
     {
       email,
