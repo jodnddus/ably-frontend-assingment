@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import styled from "styled-components";
 
-import { UserInfoCard } from "components";
+import { Button, UserInfoCard } from "components";
 
 import { setUserInfo } from "reducers/user";
 
@@ -29,6 +29,14 @@ function UserInfo() {
         name={user.userInfo.name}
         email={user.userInfo.email}
         profileImg={user.userInfo.profileImage}
+      />
+      <Button
+        type="button"
+        name="로그아웃"
+        isDisable={false}
+        onClick={() => {
+          console.log("로그아웃");
+        }}
       />
     </UserInfoContainer>
   );
