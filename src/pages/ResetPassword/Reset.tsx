@@ -46,7 +46,7 @@ function Reset() {
       />
       <Button
         type="button"
-        name="다음"
+        name="비밀번호 변경하기"
         isDisable={false}
         onClick={onClickNext}
       />
