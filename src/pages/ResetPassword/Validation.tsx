@@ -1,14 +1,31 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 import { Button, Input, Timer } from "components";
 
-import { useAppSelector } from "hooks";
+import { setConfirmToken } from "reducers/auth";
+
+import { useAppDispatch, useAppSelector } from "hooks";
+
+import { validationAuthCode } from "lib/services/auth";
 
 function Validation() {
   const auth = useAppSelector((state) => state.auth);
+  const dispatch = useAppDispatch();
+
+  const navigate = useNavigate();
 
   const [authCode, setAuthCode] = useState("");
+
+  const onClickNext = () => {
+    validationAuthCode(auth.email, authCode, auth.issueToken)
+      .then((res) => {
+        dispatch(setConfirmToken(res.confirmToken));
+        navigate("/resetPassword/reset");
+      })
+      .catch((e) => window.alert(e.response.data.error.message));
+  };
 
   if (!auth.remainMillisecond) {
     return null;
@@ -24,7 +41,12 @@ function Validation() {
         onChange={(value) => setAuthCode(value)}
         isError={false}
       />
-      <Button type="button" name="다음" isDisable={false} onClick={() => {}} />
+      <Button
+        type="button"
+        name="다음"
+        isDisable={false}
+        onClick={onClickNext}
+      />
     </ValidationContainer>
   );
 }
