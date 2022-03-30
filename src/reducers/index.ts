@@ -2,9 +2,11 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import logger from "redux-logger";
 
 import user from "./user";
+import auth from "./auth";
 
 export const rootReducer = combineReducers({
   user,
+  auth,
 });
 
 const store = configureStore({
