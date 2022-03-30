@@ -19,7 +19,7 @@ function UserInfo() {
   useEffect(() => {
     getUserInfo(user.accessToken)
       .then((res) => dispatch(setUserInfo(res)))
-      .catch((e) => console.log(e.response));
+      .catch((e) => window.alert(e.response.data.error.message));
   }, [user.accessToken, dispatch]);
 
   if (!user.userInfo) {
@@ -44,7 +44,7 @@ function UserInfo() {
               navigate("/");
             })
             .catch((e) => {
-              console.log(e.response);
+              window.alert(e.response.data.error.message);
             });
         }}
       />
