@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 interface ButtonPropTypes {
+  type: "button" | "submit" | "reset";
   name: string;
   onClick(): void;
   isDisable: boolean;
@@ -9,6 +10,7 @@ interface ButtonPropTypes {
 }
 
 function Button({
+  type,
   name,
   onClick,
   isDisable,
@@ -17,6 +19,7 @@ function Button({
 }: ButtonPropTypes) {
   return (
     <ButtonTag
+      type={type}
       className={className}
       onClick={() => onClick()}
       disabled={isDisable}
