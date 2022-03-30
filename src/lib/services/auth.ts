@@ -1,4 +1,4 @@
-import { auth } from "lib/apis";
+import auth from "lib/apis/auth";
 
 import {
   AuthCodeValidationTokenType,
