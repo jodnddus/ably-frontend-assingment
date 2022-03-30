@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { UserInfoType } from "lib/types/auth.types";
+import { UserInfoType } from "lib/types/auth";
 
 interface InitialStateType {
   accessToken: string;

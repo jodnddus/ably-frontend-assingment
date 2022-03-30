@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { GetAuthCodeResponseType } from "lib/types/auth.types";
+import { GetAuthCodeResponseType } from "lib/types/auth";
 
 interface InitialStateType {
   email: string;

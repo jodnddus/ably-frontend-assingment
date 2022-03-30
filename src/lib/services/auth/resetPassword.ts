@@ -1,6 +1,6 @@
 import { auth } from "lib/apis";
 
-import { ResetPasswordResponseType } from "lib/types/auth.types";
+import { ResetPasswordResponseType } from "lib/types/auth";
 
 const resetPassword = async (
   email: string,

@@ -1,6 +1,6 @@
 import { auth } from "lib/apis";
 
-import { AuthCodeValidationTokenType } from "lib/types/auth.types";
+import { AuthCodeValidationTokenType } from "lib/types/auth";
 
 const validationAuthCode = async (
   email: string,
