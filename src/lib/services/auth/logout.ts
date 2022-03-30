@@ -1,7 +1,9 @@
 import { auth } from "lib/apis";
 
+import { LogoutResponseType } from "lib/types/auth.types";
+
 const logout = async (accessToken: string) => {
-  const { data } = await auth.post("/api/logout", null, {
+  const { data } = await auth.post<LogoutResponseType>("/api/logout", null, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
