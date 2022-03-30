@@ -6,12 +6,14 @@ interface InitialStateType {
   email: string;
   issueToken: string;
   remainMillisecond: number | null;
+  confirmToken: string;
 }
 
 const initialState: InitialStateType = {
   email: "",
   issueToken: "",
   remainMillisecond: null,
+  confirmToken: "",
 };
 
 export const authSlice = createSlice({
@@ -25,9 +27,12 @@ export const authSlice = createSlice({
       state.issueToken = action.payload.issueToken;
       state.remainMillisecond = action.payload.remainMillisecond;
     },
+    setConfirmToken(state, action: PayloadAction<string>) {
+      state.confirmToken = action.payload;
+    },
   },
 });
 
-export const { setEmail, setAuthCode } = authSlice.actions;
+export const { setEmail, setAuthCode, setConfirmToken } = authSlice.actions;
 
 export default authSlice.reducer;
