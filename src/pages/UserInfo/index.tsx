@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import styled from "styled-components";
 
+import { UserInfoCard } from "components";
+
 import { setUserInfo } from "reducers/user";
 
 import { useAppDispatch, useAppSelector } from "hooks";
@@ -17,7 +19,19 @@ function UserInfo() {
       .catch((e) => console.log(e.response));
   }, [user.accessToken, dispatch]);
 
-  return <UserInfoContainer></UserInfoContainer>;
+  if (!user.userInfo) {
+    return null;
+  }
+
+  return (
+    <UserInfoContainer>
+      <UserInfoCard
+        name={user.userInfo.name}
+        email={user.userInfo.email}
+        profileImg={user.userInfo.profileImage}
+      />
+    </UserInfoContainer>
+  );
 }
 
 const UserInfoContainer = styled.div``;
