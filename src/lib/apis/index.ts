@@ -1,3 +1,3 @@
-import auth from "./auth.api";
+import auth from "./auth";
 
 export { auth };
