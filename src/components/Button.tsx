@@ -3,8 +3,8 @@ import styled from "styled-components";
 interface ButtonPropTypes {
   type: "button" | "submit" | "reset";
   name: string;
-  onClick(): void;
   isDisable: boolean;
+  onClick?(): void;
   className?: string;
   testId?: string;
 }
@@ -12,8 +12,8 @@ interface ButtonPropTypes {
 function Button({
   type,
   name,
-  onClick,
   isDisable,
+  onClick,
   className,
   testId,
 }: ButtonPropTypes) {
@@ -21,7 +21,7 @@ function Button({
     <ButtonTag
       type={type}
       className={className}
-      onClick={() => onClick()}
+      onClick={onClick ? () => onClick() : undefined}
       disabled={isDisable}
       isDisable={isDisable}
       data-testid={testId}
