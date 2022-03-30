@@ -6,17 +6,23 @@ import { login } from "lib/services/auth";
 
 import { Button, Input } from "components";
 
+import { useAppDispatch } from "hooks";
+
+import { setAccessToken } from "reducers/user";
+
 function Login() {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
 
+  const dispatch = useAppDispatch();
+
   const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     login(id, password)
       .then((res) => {
-        localStorage.setItem("accessToken", res.accessToken);
+        dispatch(setAccessToken(res.accessToken));
         navigate("/userInfo");
       })
       .catch((e) => window.alert(e.response.data.error.message));
