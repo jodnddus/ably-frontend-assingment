@@ -11,12 +11,12 @@ import { useAppDispatch } from "hooks";
 import { login } from "lib/services/auth";
 
 function Login() {
-  const [id, setId] = useState("");
-  const [password, setPassword] = useState("");
+  const dispatch = useAppDispatch();
 
   const navigate = useNavigate();
 
-  const dispatch = useAppDispatch();
+  const [id, setId] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
