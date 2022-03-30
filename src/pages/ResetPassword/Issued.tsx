@@ -7,7 +7,7 @@ import { setAuthCode, setEmail } from "reducers/auth";
 
 import { useAppDispatch, useAppSelector } from "hooks";
 
-import { getAuthCodeForResetPassword } from "lib/services/auth";
+import { getAuthCode } from "lib/services/auth";
 
 function Issued() {
   const auth = useAppSelector((state) => state.auth);
@@ -16,7 +16,7 @@ function Issued() {
   const navigate = useNavigate();
 
   const onClickNext = () => {
-    getAuthCodeForResetPassword(auth.email)
+    getAuthCode(auth.email)
       .then((res) => {
         dispatch(setAuthCode(res));
         navigate("/resetPassword/validation");

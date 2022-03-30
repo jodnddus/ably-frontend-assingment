@@ -1,7 +1,7 @@
 import login from "./login";
 import logout from "./logout";
 import getUserInfo from "./getUserInfo";
-import getAuthCodeForResetPassword from "./getAuthCodeForResetPassword";
+import getAuthCode from "./getAuthCode";
 import validationAuthCode from "./validationAuthCode";
 import resetPassword from "./resetPassword";
 
@@ -9,7 +9,7 @@ export {
   login,
   logout,
   getUserInfo,
-  getAuthCodeForResetPassword,
+  getAuthCode,
   validationAuthCode,
   resetPassword,
 };
