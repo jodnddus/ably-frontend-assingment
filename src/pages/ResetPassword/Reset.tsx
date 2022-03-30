@@ -11,10 +11,10 @@ import { resetPassword } from "lib/services/auth";
 function Reset() {
   const auth = useAppSelector((state) => state.auth);
 
+  const navigate = useNavigate();
+
   const [newPassword, setNewPassword] = useState("");
   const [newPasswordConfirm, setNewPasswordConfirm] = useState("");
-
-  const navigate = useNavigate();
 
   const onClickNext = () => {
     resetPassword(
