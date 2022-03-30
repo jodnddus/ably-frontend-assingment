@@ -4,13 +4,13 @@ import { GetAuthCodeResponseType } from "lib/types/auth.types";
 
 interface InitialStateType {
   email: string;
-  issueToken: string | null;
+  issueToken: string;
   remainMillisecond: number | null;
 }
 
 const initialState: InitialStateType = {
   email: "",
-  issueToken: null,
+  issueToken: "",
   remainMillisecond: null,
 };
 

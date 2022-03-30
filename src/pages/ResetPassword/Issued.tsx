@@ -1,24 +1,22 @@
-import { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 import { Button, Input } from "components";
 
-import { setAuthCode } from "reducers/auth";
+import { setAuthCode, setEmail } from "reducers/auth";
 
-import { useAppDispatch } from "hooks";
+import { useAppDispatch, useAppSelector } from "hooks";
 
 import { getAuthCodeForResetPassword } from "lib/services/auth";
 
 function Issued() {
-  const [email, setEmail] = useState("");
+  const auth = useAppSelector((state) => state.auth);
+  const dispatch = useAppDispatch();
 
   const navigate = useNavigate();
 
-  const dispatch = useAppDispatch();
-
   const onClickNext = () => {
-    getAuthCodeForResetPassword(email)
+    getAuthCodeForResetPassword(auth.email)
       .then((res) => {
         dispatch(setAuthCode(res));
         navigate("/resetPassword/validation");
@@ -31,8 +29,8 @@ function Issued() {
       <h1>인증 코드 발급 요청</h1>
       <Input
         type="text"
-        value={email}
-        onChange={(value) => setEmail(value)}
+        value={auth.email}
+        onChange={(value) => dispatch(setEmail(value))}
         isError={false}
       />
       <Button
