@@ -7,7 +7,7 @@ import Validation from "./Validation";
 function ResetPassword() {
   return (
     <Routes>
-      <Route path={"issued"} element={<Issued />} />
+      <Route path={""} element={<Issued />} />
       <Route path={"validation"} element={<Validation />} />
       <Route path={"reset"} element={<Reset />} />
     </Routes>
