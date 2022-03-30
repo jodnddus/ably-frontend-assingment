@@ -2,13 +2,13 @@ import { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
-import { login } from "lib/services/auth";
-
 import { Button, Input } from "components";
+
+import { setAccessToken } from "reducers/user";
 
 import { useAppDispatch } from "hooks";
 
-import { setAccessToken } from "reducers/user";
+import { login } from "lib/services/auth";
 
 function Login() {
   const [id, setId] = useState("");
