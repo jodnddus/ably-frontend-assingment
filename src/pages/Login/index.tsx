@@ -30,8 +30,9 @@ function Login() {
 
   return (
     <LoginContainer>
+      <h1>로그인</h1>
       <form onSubmit={handleOnSubmit}>
-        <div>
+        <InputContainer>
           <Input
             type="text"
             value={id}
@@ -44,16 +45,18 @@ function Login() {
             isError={false}
             onChange={(value) => setPassword(value)}
           />
-        </div>
-        <Button type={"submit"} name="버튼" isDisable={false} />
-        <Button
-          type={"button"}
-          name="비밀번호 재설정"
-          isDisable={false}
-          onClick={() => {
-            navigate("/resetPassword");
-          }}
-        />
+        </InputContainer>
+        <ButtonContainer>
+          <Button type={"submit"} name="버튼" isDisable={false} />
+          <Button
+            type={"button"}
+            name="비밀번호 재설정"
+            isDisable={false}
+            onClick={() => {
+              navigate("/resetPassword");
+            }}
+          />
+        </ButtonContainer>
       </form>
     </LoginContainer>
   );
@@ -61,6 +64,20 @@ function Login() {
 
 const LoginContainer = styled.div`
   display: flex;
+  flex-direction: column;
+  form {
+    width: 100%;
+  }
+`;
+const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+  gap: 1rem;
+`;
+const ButtonContainer = styled.div`
+  display: flex;
+  gap: 1rem;
 `;
 
 export default Login;
