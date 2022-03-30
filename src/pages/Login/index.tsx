@@ -1,5 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+
+import { login } from "lib/services/auth";
 
 import { Button, Input } from "components";
 
@@ -7,9 +10,16 @@ function Login() {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
+
   const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("submit: ", e);
+    login(id, password)
+      .then((res) => {
+        localStorage.setItem("accessToken", res.accessToken);
+        navigate("/userInfo");
+      })
+      .catch((e) => window.alert(e.response.data.error.message));
   };
 
   return (
