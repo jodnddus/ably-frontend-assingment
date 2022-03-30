@@ -19,8 +19,8 @@ function UserInfo() {
   useEffect(() => {
     getUserInfo(user.accessToken)
       .then((res) => dispatch(setUserInfo(res)))
-      .catch((e) => window.alert(e.response.data.error.message));
-  }, [user.accessToken, dispatch]);
+      .catch(() => navigate("/"));
+  }, [user.accessToken, dispatch, navigate]);
 
   if (!user.userInfo) {
     return null;
