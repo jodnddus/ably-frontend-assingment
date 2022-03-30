@@ -40,6 +40,14 @@ function Login() {
           />
         </div>
         <Button type={"submit"} name="버튼" isDisable={false} />
+        <Button
+          type={"button"}
+          name="비밀번호 재설정"
+          isDisable={false}
+          onClick={() => {
+            navigate("/resetPassword");
+          }}
+        />
       </form>
     </LoginContainer>
   );
