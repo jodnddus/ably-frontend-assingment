@@ -21,6 +21,7 @@ const AppContainer = styled.div`
   margin: 0 auto;
   min-width: 470px;
   max-width: 640px;
+  padding: 12px;
 `;
 
 export default App;
