@@ -46,6 +46,7 @@ const TimerContainer = styled.div<{ isNotMuchLeft: boolean }>`
 const TimeP = styled.p<{ isNotMuchLeft: boolean }>`
   color: ${(props) => (props.isNotMuchLeft ? "#E85440" : "#A2A9B0")};
   text-align: center;
+  font-weight: 700;
 `;
 
 export default Timer;
