@@ -5,6 +5,7 @@ interface InputPropTypes {
   value: string;
   isError: boolean;
   onChange: (value: string) => void;
+  placeholder?: string;
   autoFocus?: boolean;
   tabIndex?: number;
   inputRef?: React.RefObject<HTMLInputElement>;
@@ -16,6 +17,7 @@ function Input({
   value,
   isError,
   onChange,
+  placeholder,
   autoFocus,
   tabIndex,
   inputRef,
@@ -26,6 +28,7 @@ function Input({
       type={type}
       value={value}
       onChange={(e) => onChange(e.target.value)}
+      placeholder={placeholder}
       autoFocus={autoFocus}
       isError={isError}
       tabIndex={tabIndex}

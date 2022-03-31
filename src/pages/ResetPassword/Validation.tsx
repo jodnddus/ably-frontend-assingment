@@ -41,6 +41,7 @@ function Validation() {
           value={authCode}
           onChange={(value) => setAuthCode(value)}
           isError={false}
+          placeholder={"인증 코드"}
         />
         <Button
           type="button"

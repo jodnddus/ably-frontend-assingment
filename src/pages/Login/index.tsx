@@ -38,12 +38,14 @@ function Login() {
             value={id}
             isError={false}
             onChange={(value) => setId(value)}
+            placeholder={"아이디"}
           />
           <Input
             type="password"
             value={password}
             isError={false}
             onChange={(value) => setPassword(value)}
+            placeholder={"패스워드"}
           />
         </InputContainer>
         <ButtonContainer>

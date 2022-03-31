@@ -38,12 +38,14 @@ function Reset() {
           value={newPassword}
           isError={false}
           onChange={(value) => setNewPassword(value)}
+          placeholder={"새로운 비밀번호"}
         />
         <Input
           type="password"
           value={newPasswordConfirm}
           isError={false}
           onChange={(value) => setNewPasswordConfirm(value)}
+          placeholder={"새로운 비밀번호 재입력"}
         />
         <Button
           type="button"

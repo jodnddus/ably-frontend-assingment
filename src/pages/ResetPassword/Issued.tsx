@@ -33,6 +33,7 @@ function Issued() {
           value={auth.email}
           onChange={(value) => dispatch(setEmail(value))}
           isError={false}
+          placeholder={"이메일"}
         />
         <Button
           type="button"
