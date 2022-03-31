@@ -44,6 +44,10 @@ function Validation() {
               return true;
             }
           }}
+          onTimeOver={() => {
+            window.alert("인증 가능 시간이 초과되었습니다");
+            navigate("/resetPassword");
+          }}
         />
         <Input
           type="text"

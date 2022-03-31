@@ -6,9 +6,10 @@ import parseToDoubleDigits from "util/parseToDoubleDigits";
 interface TimerPropTypes {
   second: number;
   isLessThanNSeconds: (seconds: number) => boolean;
+  onTimeOver: () => void;
 }
 
-function Timer({ second, isLessThanNSeconds }: TimerPropTypes) {
+function Timer({ second, isLessThanNSeconds, onTimeOver }: TimerPropTypes) {
   const [seconds, setSeconds] = useState(second / 1000);
 
   useEffect(() => {
@@ -17,11 +18,12 @@ function Timer({ second, isLessThanNSeconds }: TimerPropTypes) {
         setSeconds(seconds - 1);
       }
       if (seconds === 0) {
+        onTimeOver();
         clearInterval(countdown);
       }
     }, 1000);
     return () => clearInterval(countdown);
-  }, [seconds]);
+  }, [seconds, onTimeOver]);
 
   return (
     <TimerContainer isNotMuchLeft={isLessThanNSeconds(seconds)}>
