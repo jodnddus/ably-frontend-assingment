@@ -20,19 +20,22 @@ function UserInfo() {
     logout(user.accessToken)
       .then((res) => {
         dispatch(setLastConnectedAt(res.lastConnectedAt));
+        dispatch(resetData());
         navigate("/");
       })
       .catch((e) => {
         window.alert(e.response.data.error.message);
       });
-    dispatch(resetData());
   };
 
   useEffect(() => {
     if (!user.userInfo && user.accessToken) {
       getUserInfo(user.accessToken)
         .then((res) => dispatch(setUserInfo(res)))
-        .catch(() => navigate("/"));
+        .catch(() => {
+          dispatch(resetData());
+          navigate("/");
+        });
     }
   }, [user.accessToken, user.userInfo, dispatch, navigate]);
 
