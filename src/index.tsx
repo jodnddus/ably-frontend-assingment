@@ -9,6 +9,10 @@ import store from "reducers";
 import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
 
+import "@fontsource/noto-sans-kr";
+import "@fontsource/noto-sans-kr/500.css";
+import "@fontsource/noto-sans-kr/700.css";
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
