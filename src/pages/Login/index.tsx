@@ -74,7 +74,7 @@ const LoginContainer = styled.div`
 const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 1rem 0;
+  padding-bottom: 1rem;
   gap: 1rem;
 `;
 const ButtonContainer = styled.div`
