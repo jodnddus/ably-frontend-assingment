@@ -17,10 +17,12 @@ function UserInfo() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getUserInfo(user.accessToken)
-      .then((res) => dispatch(setUserInfo(res)))
-      .catch(() => navigate("/"));
-  }, [user.accessToken, dispatch, navigate]);
+    if (!user.userInfo) {
+      getUserInfo(user.accessToken)
+        .then((res) => dispatch(setUserInfo(res)))
+        .catch(() => navigate("/"));
+    }
+  }, [user.accessToken, user.userInfo, dispatch, navigate]);
 
   if (!user.userInfo) {
     return null;
