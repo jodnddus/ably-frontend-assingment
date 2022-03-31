@@ -35,6 +35,19 @@ function Input({
   );
 }
 
-const InputTag = styled.input<{ isError: boolean }>``;
+const InputTag = styled.input<{ isError: boolean }>`
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  padding: 8.5px 16px;
+  box-sizing: border-box;
+  font-weight: 700;
+  font-size: 18px;
+  height: 45px;
+  &:focus {
+    border-color: #0969da;
+    outline: none;
+    box-shadow: 0 0 0 3px #0969da4d;
+  }
+`;
 
 export default Input;
