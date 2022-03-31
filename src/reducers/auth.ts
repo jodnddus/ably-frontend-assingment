@@ -27,12 +27,16 @@ export const authSlice = createSlice({
       state.issueToken = action.payload.issueToken;
       state.remainMillisecond = action.payload.remainMillisecond;
     },
+    setRemainMillisecond(state, action: PayloadAction<number>) {
+      state.remainMillisecond = action.payload;
+    },
     setConfirmToken(state, action: PayloadAction<string>) {
       state.confirmToken = action.payload;
     },
   },
 });
 
-export const { setEmail, setAuthCode, setConfirmToken } = authSlice.actions;
+export const { setEmail, setAuthCode, setRemainMillisecond, setConfirmToken } =
+  authSlice.actions;
 
 export default authSlice.reducer;
