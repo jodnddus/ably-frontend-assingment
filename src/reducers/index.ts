@@ -1,6 +1,9 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import logger from "redux-logger";
 
+import { persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+
 import user from "./user";
 import auth from "./auth";
 
@@ -9,8 +12,13 @@ export const rootReducer = combineReducers({
   auth,
 });
 
+const persistConfig = {
+  key: "root",
+  storage: storage,
+};
+
 const store = configureStore({
-  reducer: rootReducer,
+  reducer: persistReducer(persistConfig, rootReducer),
   middleware: [logger],
 });
 
