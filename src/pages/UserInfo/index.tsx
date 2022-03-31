@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import { Button, UserInfoCard } from "components";
 
-import { setLastConnectedAt, setUserInfo } from "reducers/user";
+import { resetData, setLastConnectedAt, setUserInfo } from "reducers/user";
 
 import { useAppDispatch, useAppSelector } from "hooks";
 
@@ -16,8 +16,20 @@ function UserInfo() {
 
   const navigate = useNavigate();
 
+  const onLogout = () => {
+    logout(user.accessToken)
+      .then((res) => {
+        dispatch(setLastConnectedAt(res.lastConnectedAt));
+        navigate("/");
+      })
+      .catch((e) => {
+        window.alert(e.response.data.error.message);
+      });
+    dispatch(resetData());
+  };
+
   useEffect(() => {
-    if (!user.userInfo) {
+    if (!user.userInfo && user.accessToken) {
       getUserInfo(user.accessToken)
         .then((res) => dispatch(setUserInfo(res)))
         .catch(() => navigate("/"));
@@ -39,16 +51,7 @@ function UserInfo() {
         type="button"
         name="로그아웃"
         isDisable={false}
-        onClick={() => {
-          logout(user.accessToken)
-            .then((res) => {
-              dispatch(setLastConnectedAt(res.lastConnectedAt));
-              navigate("/");
-            })
-            .catch((e) => {
-              window.alert(e.response.data.error.message);
-            });
-        }}
+        onClick={onLogout}
       />
     </UserInfoContainer>
   );

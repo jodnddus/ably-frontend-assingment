@@ -27,10 +27,14 @@ export const userSlice = createSlice({
     setUserInfo(state, action: PayloadAction<UserInfoType>) {
       state.userInfo = action.payload;
     },
+    resetData(state) {
+      state.accessToken = "";
+      state.userInfo = null;
+    },
   },
 });
 
-export const { setAccessToken, setLastConnectedAt, setUserInfo } =
+export const { setAccessToken, setLastConnectedAt, setUserInfo, resetData } =
   userSlice.actions;
 
 export default userSlice.reducer;
