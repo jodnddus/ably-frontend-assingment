@@ -5,9 +5,10 @@ import parseToDoubleDigits from "util/parseToDoubleDigits";
 
 interface TimerPropTypes {
   second: number;
+  isLessThanNSeconds: (seconds: number) => boolean;
 }
 
-function Timer({ second }: TimerPropTypes) {
+function Timer({ second, isLessThanNSeconds }: TimerPropTypes) {
   const [seconds, setSeconds] = useState(second / 1000);
 
   useEffect(() => {
@@ -23,8 +24,8 @@ function Timer({ second }: TimerPropTypes) {
   }, [seconds]);
 
   return (
-    <TimerContainer>
-      <TimeP>
+    <TimerContainer isNotMuchLeft={isLessThanNSeconds(seconds)}>
+      <TimeP isNotMuchLeft={isLessThanNSeconds(seconds)}>
         {parseToDoubleDigits(Math.floor(seconds / 60))}:
         {parseToDoubleDigits(seconds % 60)}
       </TimeP>
@@ -32,7 +33,17 @@ function Timer({ second }: TimerPropTypes) {
   );
 }
 
-const TimerContainer = styled.div``;
-const TimeP = styled.p``;
+const TimerContainer = styled.div<{ isNotMuchLeft: boolean }>`
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  background-color: ${(props) => (props.isNotMuchLeft ? "#FFF2F2" : "#F2F4F8")};
+  width: fit-content;
+  border-radius: 4px;
+`;
+const TimeP = styled.p<{ isNotMuchLeft: boolean }>`
+  color: ${(props) => (props.isNotMuchLeft ? "#E85440" : "#A2A9B0")};
+  text-align: center;
+`;
 
 export default Timer;

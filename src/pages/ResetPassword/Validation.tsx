@@ -35,7 +35,16 @@ function Validation() {
     <ValidationContainer>
       <h1>인증 코드 검증</h1>
       <ElementsContainer>
-        <Timer second={auth.remainMillisecond} />
+        <Timer
+          second={auth.remainMillisecond}
+          isLessThanNSeconds={(seconds) => {
+            if (seconds > 60) {
+              return false;
+            } else {
+              return true;
+            }
+          }}
+        />
         <Input
           type="text"
           value={authCode}
