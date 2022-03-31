@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import { Button, Input, Timer } from "components";
 
-import { setConfirmToken } from "reducers/auth";
+import { setConfirmToken, setRemainMillisecond } from "reducers/auth";
 
 import { useAppDispatch, useAppSelector } from "hooks";
 
@@ -36,7 +36,8 @@ function Validation() {
       <h1>인증 코드 검증</h1>
       <ElementsContainer>
         <Timer
-          second={auth.remainMillisecond}
+          second={auth.remainMillisecond / 1000}
+          setSecond={(second) => dispatch(setRemainMillisecond(second * 1000))}
           isLessThanNSeconds={(seconds) => {
             if (seconds > 60) {
               return false;

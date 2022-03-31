@@ -1,35 +1,39 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import styled from "styled-components";
 
 import parseToDoubleDigits from "util/parseToDoubleDigits";
 
 interface TimerPropTypes {
   second: number;
+  setSecond: (second: number) => void;
   isLessThanNSeconds: (seconds: number) => boolean;
   onTimeOver: () => void;
 }
 
-function Timer({ second, isLessThanNSeconds, onTimeOver }: TimerPropTypes) {
-  const [seconds, setSeconds] = useState(second / 1000);
-
+function Timer({
+  second,
+  setSecond,
+  isLessThanNSeconds,
+  onTimeOver,
+}: TimerPropTypes) {
   useEffect(() => {
     const countdown = setInterval(() => {
-      if (seconds > 0) {
-        setSeconds(seconds - 1);
+      if (second > 0) {
+        setSecond(second - 1);
       }
-      if (seconds === 0) {
+      if (second === 0) {
         onTimeOver();
         clearInterval(countdown);
       }
     }, 1000);
     return () => clearInterval(countdown);
-  }, [seconds, onTimeOver]);
+  }, [onTimeOver, second, setSecond]);
 
   return (
-    <TimerContainer isNotMuchLeft={isLessThanNSeconds(seconds)}>
-      <TimeP isNotMuchLeft={isLessThanNSeconds(seconds)}>
-        {parseToDoubleDigits(Math.floor(seconds / 60))}:
-        {parseToDoubleDigits(seconds % 60)}
+    <TimerContainer isNotMuchLeft={isLessThanNSeconds(second)}>
+      <TimeP isNotMuchLeft={isLessThanNSeconds(second)}>
+        {parseToDoubleDigits(Math.floor(second / 60))}:
+        {parseToDoubleDigits(second % 60)}
       </TimeP>
     </TimerContainer>
   );
